@@ -1,0 +1,201 @@
+/* ==========================================================================
+   Metafora Issue Tool — фиксированная светлая тема (никакого dark)
+   ========================================================================== */
+
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --text: #111111;
+  --muted: #666666;
+  --line: #e6e6e6;
+  --accent: #111111;
+  --focus: #0a84ff;
+  --shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell,
+        "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* ---------- Шапка ---------- */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+h1 { margin: 0; font-size: 18px; }
+
+/* ---------- Контейнер ---------- */
+
+.wrap {
+  max-width: none;      /* полная ширина */
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 16px 80px;
+}
+
+/* ---------- Карточки ---------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: var(--shadow);
+}
+
+.card .card {
+  margin: 12px 0 0;
+  background: #fafafa;
+  border-color: #eeeeee;
+  box-shadow: none;
+}
+
+/* ---------- Текстовые утилиты ---------- */
+
+.muted { color: var(--muted); font-size: 13px; }
+.hint  { color: var(--muted); font-size: 12px; margin-top: 6px; }
+.divider { height: 1px; background: var(--line); margin: 16px 0; }
+ul { margin: 8px 0 8px 18px; }
+
+/* ---------- Формы ---------- */
+
+label { display: block; margin: 10px 0 6px; }
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+textarea { min-height: 120px; resize: vertical; }
+
+input:focus,
+textarea:focus {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px rgba(10,132,255,.15);
+}
+
+/* ---------- Сетка ---------- */
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 1100px) {
+  .row { grid-template-columns: 1fr; }
+}
+
+/* ---------- Кнопки ---------- */
+
+.btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease,
+              transform .02s ease;
+  user-select: none;
+}
+
+.btn:hover { background: #1111110d; }
+.btn:active { transform: translateY(1px); }
+
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn.primary:hover {
+  background: #000;
+  border-color: #000;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(10,132,255,.15);
+}
+
+/* ---------- Таблицы ---------- */
+
+table.meta {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+table.meta td {
+  padding: 6px 8px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+
+table.meta tr:last-child td { border-bottom: 0; }
+
+table.meta td:first-child {
+  color: var(--muted);
+  width: 220px;
+}
+
+/* ---------- Iframe / предпросмотр ---------- */
+
+iframe {
+  width: 100%;
+  min-height: 320px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* ---------- Служебные ---------- */
+
+.fixed-reset {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+}
+
+/* ---------- Печать ---------- */
+
+@media print {
+  header, .btns { display: none !important; }
+  .wrap { padding: 0; margin: 0; }
+  .card { border: 1px solid #000; box-shadow: none; }
+}
